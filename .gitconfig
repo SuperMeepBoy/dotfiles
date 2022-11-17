@@ -1,0 +1,72 @@
+[color]
+  ui = true
+
+[alias]
+  st = status -suno
+  sta = status -s
+  ci = commit
+  ca = commit --amend
+  co = checkout
+  l = log --oneline --graph --decorate
+  lad = log --all --graph --color --name-status --format='%C(yellow)%h%Creset %cr %C(blue)%cn%Creset -%C(auto)%d%Creset %s'
+  la = log --oneline --graph --all --decorate
+  las = log --oneline --graph --all --decorate --simplify-by-decoration
+  b = branch -v
+  ba = branch -av
+  d = diff
+  dw = diff --color-words='[[:alnum:]]+|[^[:space:]]'
+  dc = diff --cached
+  fix = commit --fixup
+  rb = rebase
+  rbc = rebase --continue
+  rba = rebase --abort
+  rbi = rebase -i --autosquash
+  pk = cherry-pick
+  pick = cherry-pick
+  pc = cherry-pick --continue
+  pa = cherry-pick --abort
+  forget = checkout --
+  inject = commit --amend -a --no-edit
+  latest = for-each-ref --sort=-taggerdate --format='%(refname:short)' --count=1
+
+[user]
+	name = Jef Roelandt
+	email = roelandt.jef@protonmail.com
+
+[core]
+  excludesfile = ~/.gitignore
+	editor = vim
+
+[push]
+  default = upstream
+
+[branch]
+  autosetuprebase = always
+
+[rerere]
+  enable = true
+
+[cola]
+    spellcheck = false
+
+# Utilisé par certains dépôts (notamment dev-servers sur GitHub, et ansible et aws sur GitLab)
+# qui possèdent un fichier `.gitattributes` marquant les fichiers vaultés.
+[diff "ansible-vault"]
+      cachetextconv = false
+    textconv = "ansible-vault view"
+
+# Git colorblind spec
+ [color "diff"]
+   meta = yellow bold
+   frag = magenta bold
+   old = red bold
+   new = blue bold
+ [color "status"]
+   added = blue
+   changed = yellow
+   untracked = red
+ [color "decorate"]
+   head=white
+   branch=blue
+[init]
+	defaultBranch = main
