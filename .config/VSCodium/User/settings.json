@@ -1,0 +1,22 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "editor.rulers": [
+    
+    120],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#fffb02"
+    },
+    "files.insertFinalNewline": true,
+    "files.autoSave": "afterDelay",
+    "emojisense.languages": {
+        "markdown": true,
+        "python": true,
+        "scminput": true,
+        "git-commit": true
+    },
+    "window.zoomLevel": 1,
+    "editor.inlineSuggest.enabled": true,
+    "codesnap.realLineNumbers": true,
+    "codesnap.showWindowTitle": true,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+}
