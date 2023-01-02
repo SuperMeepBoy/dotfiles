@@ -1,22 +1,37 @@
 {
     "workbench.colorTheme": "Default High Contrast",
     "editor.rulers": [
-    
-    120],
+        120
+    ],
     "workbench.colorCustomizations": {
         "editorRuler.foreground": "#fffb02"
     },
     "files.insertFinalNewline": true,
     "files.autoSave": "afterDelay",
+    "editor.inlineSuggest.enabled": true,
     "emojisense.languages": {
         "markdown": true,
         "python": true,
         "scminput": true,
         "git-commit": true
     },
-    "window.zoomLevel": 1,
-    "editor.inlineSuggest.enabled": true,
     "codesnap.realLineNumbers": true,
     "codesnap.showWindowTitle": true,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "redhat.telemetry.enabled": false,
+    "emmet.syntaxProfiles": {},
+    "autoDocstring.docstringFormat": "google",
+    "http.proxyAuthorization": null,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "-l 120",
+    ],
+    "python.venvPath": "~/.cache/pypoetry/virtualenvs",
+    "window.zoomLevel": 1,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "*/.coverage": true,
+        "*/.mypy_cache": true,
+    }
 }
