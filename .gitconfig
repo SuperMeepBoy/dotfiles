@@ -1,6 +1,9 @@
 [color]
   ui = true
 
+[column]
+  ui = auto
+
 [alias]
   st = status -suno
   sta = status -s
@@ -17,6 +20,7 @@
   dw = diff --color-words='[[:alnum:]]+|[^[:space:]]'
   dc = diff --cached
   fix = commit --fixup
+  force = push --force-with-lease --force-if-includes
   rb = rebase
   rbc = rebase --continue
   rba = rebase --abort
@@ -25,48 +29,87 @@
   pick = cherry-pick
   pc = cherry-pick --continue
   pa = cherry-pick --abort
+  denounce = blame --color-by-age
   forget = checkout --
   inject = commit --amend -a --no-edit
   latest = for-each-ref --sort=-taggerdate --format='%(refname:short)' --count=1
 
 [user]
-	name = Jef Roelandt
-	email = roelandt.jef@protonmail.com
+  name = Jef Roelandt
+  email = roelandt.jef@plaws.fr
 
 [core]
   excludesfile = ~/.gitignore
-	editor = vim
+  editor = vim
 
 [push]
-  default = upstream
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 
 [branch]
   autosetuprebase = always
+  sort = -committerdate
 
 [rerere]
   enable = true
+  autoupdate = true
 
 [cola]
-    spellcheck = false
+  spellcheck = false
 
 # Utilisé par certains dépôts (notamment dev-servers sur GitHub, et ansible et aws sur GitLab)
 # qui possèdent un fichier `.gitattributes` marquant les fichiers vaultés.
 [diff "ansible-vault"]
-      cachetextconv = false
-    textconv = "ansible-vault view"
+  cachetextconv = false
+  textconv = "ansible-vault view"
 
 # Git colorblind spec
- [color "diff"]
-   meta = yellow bold
-   frag = magenta bold
-   old = red bold
-   new = blue bold
- [color "status"]
-   added = blue
-   changed = yellow
-   untracked = red
- [color "decorate"]
-   head=white
-   branch=blue
+[color "diff"]
+  meta = yellow bold
+  frag = white
+  old = red bold
+  new = blue bold
+  oldMoved = yellow bold ul
+  newMoved = blue bold ul
+[color "status"]
+  added = blue
+  changed = yellow
+  untracked = red
+[color "decorate"]
+  head=white
+  branch=blue
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[tag]
+  sort = version:refname
+
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[help]
+  autocorrect = prompt
+
+[commit]
+  verbose = true
+
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[pull]
+  rebase = true
