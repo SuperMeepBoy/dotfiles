@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/jef/.oh-my-zsh"
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
@@ -85,21 +85,25 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+#
+#
 ## My conf
 
 # PROMPT="$emoji[rainbow] %(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
@@ -110,13 +114,23 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 # Add color to man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+# export LESS_TERMCAP_mb=$'\e[1;32m'
+# export LESS_TERMCAP_md=$'\e[1;32m'
+# export LESS_TERMCAP_me=$'\e[0m'
+# export LESS_TERMCAP_se=$'\e[0m'
+# export LESS_TERMCAP_so=$'\e[01;33m'
+# export LESS_TERMCAP_ue=$'\e[0m'
+# export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
 
 # Meaning of LESS_TERMCAP suffixes :
 # termcap terminfo
@@ -135,15 +149,6 @@ export EDITOR='vim'
 
 # For breakpoint() in python
 export PYTHONBREAKPOINT=ipdb.set_trace
-
-# For nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# This loads nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 echo '   _   ___  ___   _   _  _ ___ '
 echo '  /_\ | _ \/ __| /_\ | \| | __|'
@@ -165,15 +170,15 @@ echo '⠁⠠⠊⠀⠀⠀⢠⣲⣃⠀⠀⠀⢿⣿⡀⣿⡿⣿⢿⣿⢻⡇⢜⠀�
 echo '⠀⠀⠀⠀⠀⠀⠀⠏⠀⠡⠀⠀⠈⡇⠈⣿⣿⣶⣦⠞⣁⠛⣿⡄⠀⠀⠀⠀⠀⠀'
 echo '⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠀⠀⠀⠇⠀⣿⣿⣿⣿⣲⣿⣿⣾⣷⡀⠀⠀⠀⠀⠀'
 
-# Add JBang to environment
-alias j!=jbang
-export PATH="$HOME/.jbang/bin:$HOME/.jbang/currentjdk/bin:$HOME/.local/bin:$PATH"
-export JAVA_HOME=$HOME/.jbang/currentjdk
+# ZelliJ
+if [[ -z "$PYCHARM_CONTEXT" ]]; then
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
-# For mkvirtualenv
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.10
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+export PATH="$PATH:$HOME/.cargo/bin"
 
-# For fuck command*
-eval $(thefuck --alias)
+# For Taskfile
+eval "$(task --completion zsh)"
+
+# Created by `pipx` on 2025-02-23 14:10:23
+export PATH="$PATH:/home/plaws/.local/bin"
