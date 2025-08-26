@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git-prompt python pylint emoji zsh-autosuggestions)
+plugins=(git-prompt python pylint emoji ssh zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -169,11 +169,6 @@ echo '⣿⣿⠿⣛⠕⠁⠀⠀⡸⠑⠁⠺⣿⡟⢻⣿⣶⣤⣨⣿⣄⠀⢵⠀�
 echo '⠁⠠⠊⠀⠀⠀⢠⣲⣃⠀⠀⠀⢿⣿⡀⣿⡿⣿⢿⣿⢻⡇⢜⠀⠀⠀⠀⠀⠀⠀'
 echo '⠀⠀⠀⠀⠀⠀⠀⠏⠀⠡⠀⠀⠈⡇⠈⣿⣿⣶⣦⠞⣁⠛⣿⡄⠀⠀⠀⠀⠀⠀'
 echo '⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠀⠀⠀⠇⠀⣿⣿⣿⣿⣲⣿⣿⣾⣷⡀⠀⠀⠀⠀⠀'
-
-# ZelliJ
-if [[ -z "$PYCHARM_CONTEXT" ]]; then
-  eval "$(zellij setup --generate-auto-start zsh)"
-fi
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
