@@ -5,38 +5,62 @@
   ui = auto
 
 [alias]
+  # Status
   st = status -suno
   sta = status -s
+
+  # Commit
   ci = commit
   ca = commit --amend
+  fix = commit --fixup
+  inject = commit --amend --no-edit
+  wip = commit --no-verify -m\"Work in progress\"
+
+  # Checkout
   co = checkout
+  forget = checkout --
+
+  # Log
   l = log --oneline --graph --decorate
   lad = log --all --graph --color --name-status --format='%C(yellow)%h%Creset %cr %C(blue)%cn%Creset -%C(auto)%d%Creset %s'
   la = log --oneline --graph --all --decorate
   las = log --oneline --graph --all --decorate --simplify-by-decoration
+  me = log -p --author roelandt
+
+  # Branch
   b = branch -v
   ba = branch -av
+
+  # Diff
   d = diff
   dw = diff --color-words='[[:alnum:]]+|[^[:space:]]'
   dc = diff --cached
-  fix = commit --fixup
+
+  # Push
   force = push --force-with-lease --force-if-includes
+
+  # Rebase
   rb = rebase
   rbc = rebase --continue
   rba = rebase --abort
   rbi = rebase -i --autosquash
+
+  # Cherry-pick
   pk = cherry-pick
   pick = cherry-pick
   pc = cherry-pick --continue
   pa = cherry-pick --abort
+
+  # Blame
   denounce = blame --color-by-age
-  forget = checkout --
-  inject = commit --amend -a --no-edit
+
+  # Misc
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
   latest = for-each-ref --sort=-taggerdate --format='%(refname:short)' --count=1
 
 [user]
   name = Jef Roelandt
-  email = roelandt.jef@plaws.fr
+  email = jroelandt@esprits.co
 
 [core]
   excludesfile = ~/.gitignore
